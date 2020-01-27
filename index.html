@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <select id="select1">
+
+    </select>
+    <img id="imgDog">
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      $.get( "https://dog.ceo/api/breeds/list", function( data ) {
+        var dogs = Object.values(data)[0];
+        dogs.forEach(dog =>
+                $('#select1').append('<option value="'+dog+'">'+dog+' </option>')
+        );
+
+      });
+      ImgC("breeds/image/random");
+      function ImgC(url){
+      $.get("https://dog.ceo/api/"+ url, function (data) {
+      $('#imgDog').attr('src',Object.values(data)[0])
+      });}
+      function GetDog(dog) {
+        ImgC()
+      }
+    </script>
+  </body>
+</html>
